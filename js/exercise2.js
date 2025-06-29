@@ -5,6 +5,25 @@
   of conneted components within the graph.
 */
 
+const connectedComponentCount = (graph) => {
+   const visited = new Set();
+   let count = 0;
+   for(let node in graph)
+     if(explore(graph, node, visited) === true)
+        count++;
+   return  count;
+};
+
+const explore = (graph, adj, visited) => {
+    if(visited.has(String(adj)) === true) return false;
+    visited.add(String(adj));
+    for(let neighbour of graph[adj]){
+       explore(graph, neighbour, visited);
+    }
+    return true;
+};
+
+
 const graph = {
     0: [0,1,5],
     1: [0],
@@ -15,5 +34,5 @@ const graph = {
     4: [3, 2]
 };
 
-for(let element of graph[0])
-     console.log(element);
+console.log("Components: " + connectedComponentCount(graph));
+
