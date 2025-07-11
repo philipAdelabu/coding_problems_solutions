@@ -1,4 +1,4 @@
-/* 
+ /* 
   Write a function, largestComponent, that takes in the adjacency list of an undirected
   graph. the funcion should return the size of the largest connected component in the graph.
 */
@@ -20,7 +20,6 @@ const explore = (graph, current, visited) => {
      for(let adj of graph[current]){
         size += explore(graph, adj, visited);
      }
-
      return size
 };
 
